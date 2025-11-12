@@ -207,4 +207,5 @@ p {
     min-width: 120px;      /* 小さくなりすぎないように */
     border-radius: 6px;    /* 画像の角を少し丸くする */
     border: 1px solid var(--border-color); /* 薄い枠線 */
+    cursor: zoom-in;
 }
