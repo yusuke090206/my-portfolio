@@ -138,9 +138,10 @@ p {
     color: var(--accent-color); /* カードタイトルをアクセントカラーに */
 }
 
-.project-card p {
+.project-card p:first-of-type {
+    /* :first-of-type を追加し、最初のPタグにだけ適用 */
     font-size: 15px;
-    flex-grow: 1; /* ★カードの高さを揃えるためのテクニック (pタグが伸びる) */
+    flex-grow: 1; 
 }
 
 /* ▼ 作品カード内のリンク (ボタン風) */
@@ -186,4 +187,25 @@ p {
         /* スマホでは1列にする (minmaxの最小値(300px)が画面幅より大きくなるため自動で1列になるが、明示的に指定) */
         grid-template-columns: 1fr;
     }
+}
+/* ▼ 作品カード内の画像ギャラリー */
+.project-images {
+    display: flex;         /* 2枚の画像を横並びにする */
+    gap: 10px;             /* 画像間の隙間 */
+    margin-bottom: 15px;   /* 下の説明文との隙間 */
+    flex-wrap: wrap;       /* スマホなどで画像が折り返せるように */
+}
+
+/* 画像そのもののスタイル */
+.project-images img {
+    /* --- サイズ調整はここ！ --- */
+    height: 180px;         /* ★画像の高さを180pxに固定（この数値を変えて調整） */
+    object-fit: cover;     /* ★縦横比を保ったまま、高さを揃える（重要）*/
+    
+    /* --- その他の設定 --- */
+    width: 100%;           /* 基本の幅（flex: 1 と併用） */
+    flex: 1;               /* 横並びの際、均等に幅を分け合う */
+    min-width: 120px;      /* 小さくなりすぎないように */
+    border-radius: 6px;    /* 画像の角を少し丸くする */
+    border: 1px solid var(--border-color); /* 薄い枠線 */
 }
