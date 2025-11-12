@@ -209,15 +209,31 @@ p {
     border: 1px solid var(--border-color); /* 薄い枠線 */
     cursor: zoom-in;
 }
-/* ▼▼▼ 作品カード内の動画調整 (ここから追加) ▼▼▼ */
+/* ▼▼▼ 作品カード内の動画調整 (YouTube埋め込み対応) ▼▼▼ */
+
+/* ラッパー（親要素）にアスペクト比（16:9）を設定 */
 .project-video-wrapper {
-    position: relative; /* 子要素(iframe)の基準点にする */
-    padding-bottom: 56.25%; /* 16:9 のアスペクト比 (9 ÷ 16 = 0.5625) */
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 のアスペクト比 (9 ÷ 16) */
     height: 0;
     overflow: hidden;
     margin-bottom: 15px;
     border-radius: 6px;
-    background: #000; /* 読み込み中の背景 */
+    background: #000;
+
+    /* --- ▼ ここを修正 ▼ --- */
+    
+    /* 1. 基本の幅を320pxに設定 (これで高さが 320 * 0.5625 = 180px になる) */
+    width: 320px;
+    
+    /* 2. ただし、カード幅よりは大きくならないようにする */
+    max-width: 100%;
+    
+    /* 3. 中央寄せ */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* --- ▲ ここまで修正 ▲ --- */
 }
 
 /* iframe（子要素）を親要素いっぱいに広げる */
@@ -228,4 +244,3 @@ p {
     width: 100%;
     height: 100%;
 }
-/* ▲▲▲ ここまで追加 ▲▲▲ */
