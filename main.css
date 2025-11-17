@@ -192,7 +192,7 @@ p {
     background: #000;
 
     /* 幅320px (16:9 で高さが 180px になる) を基準 */
-    width: 320px;
+    width: 300px;
     /* ただし、カード幅よりは大きくならないように */
     max-width: 100%; 
     /* 中央寄せ */
@@ -214,12 +214,6 @@ p {
 @media (max-width: 768px) {
     body {
         font-size: 15px; /* スマホでは少し文字を小さく */
-    .project-video-wrapper {
-        /* PC用の固定幅(width: 320px)を上書きし、
-        スマホでは幅いっぱい(100%)にする 
-        */
-        width: 100%;
-    }
     }
 
     .container {
@@ -239,5 +233,11 @@ p {
     .projects-grid {
         /* スマホでは1列にする (はみ出し対策) */
         grid-template-columns: 1fr;
+    }
+    .project-video-wrapper {
+        /* PC用の固定幅(width: 320px)を上書きし、
+        スマホでは幅いっぱい(100%)にする 
+        */
+        width: 100%;
     }
 }
