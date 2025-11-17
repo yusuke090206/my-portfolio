@@ -231,4 +231,7 @@ p {
         /* スマホでは1列にする (はみ出し対策) */
         grid-template-columns: 1fr;
     }
+    .project-video-wrapper {
+        width: 100%;
+    }
 }
