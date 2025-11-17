@@ -191,10 +191,7 @@ p {
     border-radius: 6px;
     background: #000;
 
-    /* 幅320px (16:9 で高さが 180px になる) を基準 */
-    width: 300px;
-    /* ただし、カード幅よりは大きくならないように */
-    max-width: 100%; 
+    max-width: 320px; 
     /* 中央寄せ */
     margin-left: auto;
     margin-right: auto;
@@ -233,11 +230,5 @@ p {
     .projects-grid {
         /* スマホでは1列にする (はみ出し対策) */
         grid-template-columns: 1fr;
-    }
-    .project-video-wrapper {
-        /* PC用の固定幅(width: 320px)を上書きし、
-        スマホでは幅いっぱい(100%)にする 
-        */
-        width: 100% !important;
     }
 }
