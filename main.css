@@ -109,7 +109,7 @@ p {
 .projects-grid {
     display: grid;
     /* 最小300pxのカードを、入るだけ並べる。隙間は 1fr (均等) */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px; /* カード間の隙間 */
 }
 
