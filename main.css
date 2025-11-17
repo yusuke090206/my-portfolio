@@ -97,12 +97,18 @@ p {
     gap: 10px; /* タグ間の隙間 */
 }
 
+/* main.css の 110行目あたり */
+
 .skill-list li {
     background-color: #f0f0f0;
     padding: 8px 16px;
     border-radius: 20px; /* 角を丸くしてタグ風に */
     font-size: 14px;
     font-weight: 500;
+    
+    /* ▼▼▼ ここを追加 ▼▼▼ */
+    width: fit-content; /* 内容の幅に合わせる */
+    /* ▲▲▲ ここまで追加 ▲▲▲ */
 }
 
 /* ▼ 作品グリッド (PCなどデフォルトの表示) */
