@@ -190,7 +190,7 @@ p {
     margin-bottom: 15px;
     border-radius: 6px;
     background: #000;
-
+    width: 100%;
     max-width: 320px; 
     /* 中央寄せ */
     margin-left: auto;
