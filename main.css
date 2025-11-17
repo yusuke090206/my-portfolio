@@ -110,7 +110,7 @@ p {
     display: grid;
     /* 最小300pxのカードを、入るだけ並べる */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px; /* カード間の隙間 */
+    gap: 15px; /* カード間の隙間 */
 }
 
 /* ▼ 作品カード */
@@ -218,7 +218,7 @@ p {
 
     .container {
         margin: 10px;
-        padding: 20px;
+        padding: 15px;
         width: auto; /* 横幅いっぱいにする */
     }
 
