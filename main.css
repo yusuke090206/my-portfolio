@@ -198,8 +198,9 @@ p {
     background: #000;
     width: 100%;
     max-width: 320px; 
-    /* 中央寄せ */
     margin: 15px auto;
+    position: relative;
+    overflow: hidden;
 }
 
 /* iframe（子要素）を親要素いっぱいに広げる */
@@ -207,9 +208,9 @@ p {
     position: absolute;
     aspect-ratio: 16/9;
     width: 100%;
-    height: auto;
-    border-radius: 6px;
-    display: block;
+    height: 100%;
+    left: 0;
+    top: 0;
     border: none;
 }
 
