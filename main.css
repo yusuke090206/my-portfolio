@@ -229,6 +229,12 @@ p {
     h2 {
         font-size: 22px;
     }
+    .project-video-wrapper {
+        /* PC用の固定幅(width: 320px)を上書きし、
+        スマホでは幅いっぱい(100%)にする 
+        */
+        width: 100%;
+    }
 
     .projects-grid {
         /* スマホでは1列にする (はみ出し対策) */
