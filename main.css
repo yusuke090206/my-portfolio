@@ -2,7 +2,7 @@
 :root {
     --primary-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --base-font-size: 16px;
-    --bg-color: #f4f7f6;         /* サイト全体の背景色 (お手本より少し色付け) */
+    --bg-color: #f4f7f6;         /* サイト全体の背景色 */
     --content-bg: #ffffff;      /* コンテンツ部分の背景色 (白) */
     --text-color: #333333;       /* 基本の文字色 */
     --heading-color: #111111;    /* 見出しの文字色 */
@@ -105,10 +105,10 @@ p {
     font-weight: 500;
 }
 
-/* ▼ 作品グリッド */
+/* ▼ 作品グリッド (PCなどデフォルトの表示) */
 .projects-grid {
     display: grid;
-    /* 最小300pxのカードを、入るだけ並べる。隙間は 1fr (均等) */
+    /* 最小300pxのカードを、入るだけ並べる */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px; /* カード間の隙間 */
 }
@@ -138,8 +138,8 @@ p {
     color: var(--accent-color); /* カードタイトルをアクセントカラーに */
 }
 
+/* 最初のPタグ（説明文）だけ高さを揃えるために伸ばす */
 .project-card p:first-of-type {
-    /* :first-of-type を追加し、最初のPタグにだけ適用 */
     font-size: 15px;
     flex-grow: 1; 
 }
@@ -160,6 +160,53 @@ p {
 
 .project-link:hover {
     background: var(--accent-hover);
+}
+
+/* ▼ 作品カード内の画像ギャラリー */
+.project-images {
+    display: flex;         /* 横並びにする */
+    gap: 10px;             /* 画像間の隙間 */
+    margin-bottom: 15px;   /* 下の説明文との隙間 */
+    flex-wrap: wrap;       /* 折り返し */
+}
+
+/* ▼ 画像そのもののスタイル */
+.project-images img {
+    height: 180px;         /* ★画像の高さを180pxに固定 */
+    object-fit: cover;     /* ★縦横比を保ったまま、高さを揃える */
+    flex: 1;               /* 横並びの際、均等に幅を分け合う */
+    min-width: 120px;      /* 小さくなりすぎないように */
+    border-radius: 6px;    /* 画像の角を少し丸くする */
+    border: 1px solid var(--border-color); /* 薄い枠線 */
+    cursor: zoom-in;       /* クリックできることを示すカーソル */
+}
+
+/* ▼ 作品カード内の動画調整 (YouTube埋め込み対応) */
+.project-video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 のアスペクト比 (9 ÷ 16) */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background: #000;
+
+    /* 幅320px (16:9 で高さが 180px になる) を基準 */
+    width: 320px;
+    /* ただし、カード幅よりは大きくならないように */
+    max-width: 100%; 
+    /* 中央寄せ */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* iframe（子要素）を親要素いっぱいに広げる */
+.project-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -184,63 +231,7 @@ p {
     }
 
     .projects-grid {
-        /* スマホでは1列にする (minmaxの最小値(300px)が画面幅より大きくなるため自動で1列になるが、明示的に指定) */
+        /* スマホでは1列にする (はみ出し対策) */
         grid-template-columns: 1fr;
     }
-}
-/* ▼ 作品カード内の画像ギャラリー */
-.project-images {
-    display: flex;         /* 2枚の画像を横並びにする */
-    gap: 10px;             /* 画像間の隙間 */
-    margin-bottom: 15px;   /* 下の説明文との隙間 */
-    flex-wrap: wrap;       /* スマホなどで画像が折り返せるように */
-}
-
-/* 画像そのもののスタイル */
-.project-images img {
-    /* --- サイズ調整はここ！ --- */
-    height: 180px;         /* ★画像の高さを180pxに固定（この数値を変えて調整） */
-    object-fit: cover;     /* ★縦横比を保ったまま、高さを揃える（重要）*/
-    
-    /* --- その他の設定 --- */          
-    flex: 1;               /* 横並びの際、均等に幅を分け合う */
-    min-width: 120px;      /* 小さくなりすぎないように */
-    border-radius: 6px;    /* 画像の角を少し丸くする */
-    border: 1px solid var(--border-color); /* 薄い枠線 */
-    cursor: zoom-in;
-}
-/* ▼▼▼ 作品カード内の動画調整 (YouTube埋め込み対応) ▼▼▼ */
-
-/* ラッパー（親要素）にアスペクト比（16:9）を設定 */
-.project-video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 のアスペクト比 (9 ÷ 16) */
-    height: 0;
-    overflow: hidden;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    background: #000;
-
-    /* --- ▼ ここを修正 ▼ --- */
-    
-    /* 1. 基本の幅を320pxに設定 (これで高さが 320 * 0.5625 = 180px になる) */
-    width: 320px;
-    
-    /* 2. ただし、カード幅よりは大きくならないようにする */
-    max-width: 100%;
-    
-    /* 3. 中央寄せ */
-    margin-left: auto;
-    margin-right: auto;
-    
-    /* --- ▲ ここまで修正 ▲ --- */
-}
-
-/* iframe（子要素）を親要素いっぱいに広げる */
-.project-video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
